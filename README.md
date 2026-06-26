@@ -1,4 +1,3 @@
-
 # 🛡️ ChurnShield AI: Enterprise Risk Hub
 
 An interactive, multi-tier full-stack analytics application designed to predict corporate account cancellation risks ("churn"). The system employs a modern hybrid database strategy (SQL + NoSQL) alongside predictive modeling logic to deliver real-time risk simulation and telemetry audit logs.
@@ -21,7 +20,7 @@ The platform is engineered using an enterprise-grade hybrid storage topology to 
 
 ## 📂 Project Directory Breakdown
 
-
+```text
 churnshield-ai/
 │
 ├── backend/
@@ -37,12 +36,11 @@ churnshield-ai/
 │
 └── requirements.txt          # Production environment dependency registry
 
-
----
-
+```
 
 
-## 🚀 Live Demo Access
+
+##Live Demo Access
 
 You can interact with the live production deployment instantly without running any local code:
 
