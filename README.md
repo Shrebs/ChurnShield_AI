@@ -36,3 +36,18 @@ churnshield-ai/
 │       └── index.html        # Main presentation template dashboard
 │
 └── requirements.txt          # Production environment dependency registry
+
+
+---
+
+## 🚀 Live Demo Access
+
+You can interact with the live production deployment instantly without running any local code:
+
+1. Click the production URL: **https://churnshield-ai-jdnj.onrender.com/**
+2. Look at the top right to see your session profile load securely from the **SQLite relational engine**.
+3. Use the **AI Simulation Controls** to adjust customer parameters:
+   - Increase **Support Tickets** or drop **App Engagement** to see the system calculate risk states dynamically.
+4. Watch the **Live System Audit Trail** update automatically, demonstrating real-time data ingestion pipelines communicating natively with our cloud **MongoDB Atlas** cluster.
+
+---
