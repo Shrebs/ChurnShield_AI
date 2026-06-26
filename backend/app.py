@@ -66,20 +66,26 @@ def log_activity():
 # 3. Optimized Production Analytical Endpoint
 @app.route('/api/churn-prediction')
 def get_prediction():
-    # Since we serialized our algorithm weights earlier:
-    # High support tickets (6) combined with dropping click engagement matches our High Risk cluster profile.
-    churn_percentage = 78.0
-    status = "High Risk"
-    message = "Action Required: High risk of cancellation detected by AI!"
+    # 1. Get numbers from the sliders in the browser
+    tickets = int(request.args.get('tickets', 5))
+    clicks = int(request.args.get('clicks', 250))
+
+    # 2. Logic: High tickets and Low clicks = High Churn Risk
+    # This is a simulation of the ML model's behavior
+    base_risk = (tickets * 8) - (clicks / 20) + 30
+    churn_percentage = max(2, min(98, round(base_risk, 1))) # Keep it between 2% and 98%
+
+    status = "High Risk" if churn_percentage > 50 else "Low Risk"
+    message = "Action Required: AI predicts imminent cancellation!" if churn_percentage > 50 else "Account Stable. No action needed."
+
+    # 3. Log the "Interaction" to MongoDB
+    logs_collection.insert_one({
+        "timestamp": datetime.utcnow(),
+        "action": f"Simulation Run: Tickets={tickets}, Clicks={clicks}, Result={churn_percentage}%"
+    })
 
     return jsonify({
-        "customer_name": "Global Logistics Corp",
         "churn_risk": churn_percentage,
         "status": status,
         "message": message
     })
-
-if __name__ == '__main__':
-    # Listen on all system network interfaces for production cloud deployment
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)

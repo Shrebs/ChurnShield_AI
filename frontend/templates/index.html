@@ -8,23 +8,41 @@
 </head>
 <body>
     <div class="dashboard-container">
-        <header style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <header style="display: flex; justify-content: space-between; align-items: center;">
             <h1>🛡️ ChurnShield AI Enterprise Hub</h1>
             <div id="user-profile-tag" style="color: var(--text-secondary); font-size: 0.9rem; background-color: var(--bg-card); padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border-color);">
-                Loading operator session profile...
+                Loading profile...
             </div>
         </header>
 
         <div class="grid-layout">
-            <main class="card" id="prediction-panel">
-                <h3>Loading Predictive Intelligence Matrix...</h3>
+            <main>
+                <section class="card" style="margin-bottom: 20px;">
+                    <h3>🎛️ AI Simulation Controls</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 20px;">Adjust the sliders to test how the ML model evaluates client health.</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <div>
+                            <label>Support Tickets Opened: <span id="val-tickets" style="font-weight: bold; color: var(--accent-red);">5</span></label>
+                            <input type="range" id="input-tickets" min="0" max="15" value="5" style="width: 100%;">
+                        </div>
+                        <div>
+                            <label>App Engagement (Clicks): <span id="val-clicks" style="font-weight: bold; color: var(--accent-green);">250</span></label>
+                            <input type="range" id="input-clicks" min="10" max="1000" value="250" style="width: 100%;">
+                        </div>
+                    </div>
+                </section>
+
+                <div class="card" id="prediction-panel">
+                    <h3>Awaiting Simulation Input...</h3>
+                </div>
             </main>
 
             <aside class="card">
                 <h3>📜 Live System Audit Trail</h3>
                 <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 15px;">Data Pipeline Ingestion Sink (MongoDB)</p>
                 <ul class="log-list" id="audit-trail">
-                    <li class="log-item"><span class="timestamp">[System]</span> Awaiting fresh thread initialization event...</li>
+                    <li class="log-item"><span class="timestamp">[System]</span> Awaiting fresh interaction...</li>
                 </ul>
             </aside>
         </div>
