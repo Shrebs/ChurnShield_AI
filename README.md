@@ -2,8 +2,6 @@
 
 An interactive, multi-tier full-stack analytics application designed to predict corporate account cancellation risks ("churn"). The system employs a modern hybrid database strategy (SQL + NoSQL) alongside predictive modeling logic to deliver real-time risk simulation and telemetry audit logs.
 
-🔗 **Live Production Link:** [Insert Your Render URL Here]
-
 ---
 
 ## 🛠️ System Architecture & Data Strategy
