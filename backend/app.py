@@ -9,11 +9,38 @@ app = Flask(__name__,
             static_folder='../frontend/static')
 
 # 1. MongoDB Cloud Ingest Setup
-MONGO_URI = os.environ.get("MONGO_URI", "mongodb://localhost:27017/")
+from flask import Flask, render_template, jsonify, request
+from pymongo import MongoClient
+import sqlite3
+from datetime import datetime
+import os
+import urllib.parse # <-- Add this import at the top!
+
+app = Flask(__name__, 
+            template_folder='../frontend/templates', 
+            static_folder='../frontend/static')
+
+# 1. MongoDB Cloud Ingest Setup (With Automatic Character Escaping)
+RAW_MONGO_URI = os.environ.get("MONGO_URI", "mongodb://localhost:27017/")
+
+# If it's a cloud Atlas link, automatically fix any password character errors safely
+if "mongodb+srv://" in RAW_MONGO_URI:
+    try:
+        # Split the link to safely encode the password section
+        prefix, rest = RAW_MONGO_URI.split("://", 1)
+        user_pass, host_rest = rest.split("@", 1)
+        username, password = user_pass.split(":", 1)
+        
+        clean_password = urllib.parse.quote_plus(password)
+        MONGO_URI = f"{prefix}://{username}:{clean_password}@{host_rest}"
+    except Exception:
+        MONGO_URI = RAW_MONGO_URI # Fallback if string layout is different
+else:
+    MONGO_URI = RAW_MONGO_URI
+
 mongo_client = MongoClient(MONGO_URI)
 db = mongo_client["churnshield_db"]
 logs_collection = db["activity_logs"]
-
 # 2. SQLite Profile Infrastructure Setup
 DB_PATH = os.path.join(os.path.dirname(__file__), 'users.db')
 
