@@ -21,7 +21,7 @@ The platform is engineered using an enterprise-grade hybrid storage topology to 
 
 ## 📂 Project Directory Breakdown
 
-```text
+
 churnshield-ai/
 │
 ├── backend/
@@ -39,6 +39,8 @@ churnshield-ai/
 
 
 ---
+
+
 
 ## 🚀 Live Demo Access
 
