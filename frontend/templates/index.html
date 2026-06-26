@@ -7,11 +7,26 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🛡️ ChurnShield AI Command Center</h1>
-        <hr>
-        <div id="alert-box" class="card">
-            <h3>Loading live server data...</h3>
+    <div class="dashboard-container">
+        <header style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <h1>🛡️ ChurnShield AI Enterprise Hub</h1>
+            <div id="user-profile-tag" style="color: var(--text-secondary); font-size: 0.9rem; background-color: var(--bg-card); padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border-color);">
+                Loading operator session profile...
+            </div>
+        </header>
+
+        <div class="grid-layout">
+            <main class="card" id="prediction-panel">
+                <h3>Loading Predictive Intelligence Matrix...</h3>
+            </main>
+
+            <aside class="card">
+                <h3>📜 Live System Audit Trail</h3>
+                <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 15px;">Data Pipeline Ingestion Sink (MongoDB)</p>
+                <ul class="log-list" id="audit-trail">
+                    <li class="log-item"><span class="timestamp">[System]</span> Awaiting fresh thread initialization event...</li>
+                </ul>
+            </aside>
         </div>
     </div>
 
